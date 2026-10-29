@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>나만의 개미 만들기</title>
+<link rel="icon" href="data:,">
+<link rel="modulepreload" href="make.js">
+<link rel="modulepreload" href="engine.js">
+<script>
+  // Show any startup failure on the page instead of a silent blank screen.
+  function showFatal(msg) {
+    var el = document.getElementById('fatal');
+    if (!el) { document.addEventListener('DOMContentLoaded', function () { showFatal(msg); }); return; }
+    el.hidden = false;
+    el.innerHTML = '<b>이 브라우저에서 페이지를 실행하지 못했어요.</b> 크롬이나 최신 사파리에서 다시 열어 보세요.<br><small>' + String(msg).replace(/</g, '&lt;') + '</small>';
+  }
+  window.addEventListener('error', function (e) { showFatal(e.message || e); });
+  window.addEventListener('unhandledrejection', function (e) { showFatal(e.reason && e.reason.message || e.reason); });
+</script>
+<script nomodule>showFatal('이 브라우저는 너무 오래돼서 이 페이지를 돌릴 수 없어요.');</script>
+<style>
+  :root { --bg:#0b0d12; --panel:#151922; --line:#262c38; --fg:#e6e8ee; --dim:#8a93a6; --acc:#f2c45c; --hw:#8fd0ff;
+    --s-event:#FFBF00; --s-ctl:#FFAB19; --s-sense:#5CB1D6; --s-motion:#4C97FF; --s-pen:#0FBD8C; --s-var:#FF8C1A; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.55 -apple-system, system-ui, "Apple SD Gothic Neo", sans-serif; word-break:keep-all; }
+  header, main { max-width:1180px; margin:0 auto; padding:0 16px; }
+  header { padding-top:16px; }
+  .back { font-size:13px; color:var(--dim); text-decoration:none; } .back:hover { color:var(--acc); }
+  h1 { font-size:24px; margin:4px 0 2px; }
+  h2 { font-size:16px; margin:0; }
+  a { color:var(--acc); }
+  code { font:12.5px ui-monospace, Menlo, monospace; background:#0e1016; padding:1px 5px; border-radius:4px; }
+  .steps { list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:0; margin:8px 0 16px; }
+  .steps li { display:inline-flex; align-items:center; gap:7px; background:#151922; border:1px solid var(--line); color:var(--dim); border-radius:99px; padding:5px 13px 5px 5px; font-size:14px; transition:background .2s, color .2s, border-color .2s; }
+  .steps li b { display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:#262c38; color:var(--fg); font-size:12px; }
+  .steps li:not(:last-child)::after { content:'→'; color:#4a5263; margin-left:4px; margin-right:-9px; }
+  .steps li:last-child::after { content:'↺'; color:#4a5263; margin-left:4px; margin-right:-6px; }
+  .steps li.on { background:#20301f; border-color:#4CBF56; color:#fff; font-weight:700; }
+  .steps li.on b { background:#4CBF56; color:#0b0d12; }
+  .steps li.on:last-child { background:#2c2716; border-color:var(--acc); } .steps li.on:last-child b { background:var(--acc); }
+  .pk { display:inline-block; background:#fff; color:#333; border-radius:10px; padding:0 7px; font-weight:700; font-size:12px; line-height:18px; }
+  #fatal { max-width:1180px; margin:0 auto 14px; padding:12px 16px; background:#4a2228; color:#ffd5da; border-radius:10px; }
+
+  main { display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:16px; align-items:start; padding-bottom:40px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; }
+  .ph { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px; flex-wrap:wrap; }
+  .hint { color:var(--dim); font-size:13px; margin:6px 0; }
+  .btn { background:#1d2230; color:var(--fg); border:1px solid var(--line); border-radius:10px; padding:7px 12px; font:inherit; font-size:14px; cursor:pointer; }
+  .btn:hover { border-color:var(--acc); }
+  .btn.go { background:var(--acc); color:#0b0d12; border-color:var(--acc); font-weight:800; animation:pulse 1.4s ease-in-out infinite; }
+  .btn:focus-visible, .pick:focus-visible, summary:focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
+  .btn:disabled { opacity:.4; cursor:default; } .btn:disabled:hover { border-color:var(--line); }
+  .btn.ghost { background:transparent; color:var(--dim); font-size:13px; padding:5px 10px; }
+  .btn.ghost:hover { color:var(--fg); }
+  .row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:12px; }
+  @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(242,196,92,0); } 50% { box-shadow:0 0 0 6px rgba(242,196,92,.45); } }
+
+  /* ---------- Scratch-style blocks ---------- */
+  #code { background-color:#0f1218; background-image:radial-gradient(rgba(255,255,255,.075) 1px, transparent 1.3px); background-size:18px 18px; border:1px solid #1c212c; border-radius:12px; padding:16px; overflow-x:auto; }
+  .drawer { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:12px; }
+  .drawer .dl { font-size:12px; color:var(--dim); letter-spacing:.02em; margin-right:2px; }
+  .drawer.sub { margin-top:6px; gap:4px; }
+  .btn.add { background:#0d2a22; border-color:var(--s-pen); color:#b6f2dc; font-weight:700; }
+  .btn.add:hover { background:#11362b; border-color:#3fe0aa; }
+  .script { display:inline-flex; flex-direction:column; min-width:100%; font-size:14.5px; font-weight:600; }
+  .blk { color:#fff; border-radius:8px; padding:8px 12px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; box-shadow:inset 0 -3px 0 rgba(0,0,0,.18); width:max-content; max-width:100%; }
+  .hat { background:var(--s-event); color:#4a3500; border-radius:22px 22px 8px 8px; padding-top:13px; margin-bottom:2px; }
+  .cw { --cc:var(--s-ctl); display:flex; flex-direction:column; width:max-content; max-width:100%; }
+  .cw > .ch { background:var(--cc); color:#fff; border-radius:8px 8px 0 0; padding:8px 12px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .cw > .cb { border-left:16px solid var(--cc); padding:4px 0 4px 4px; display:flex; flex-direction:column; gap:3px; }
+  .cw > .cf { background:var(--cc); height:18px; border-radius:0 0 8px 8px; width:120px; box-shadow:inset 0 -3px 0 rgba(0,0,0,.18); display:flex; align-items:center; justify-content:flex-end; padding-right:8px; font-size:12px; }
+  .loop > .cb { gap:6px; padding-top:6px; padding-bottom:6px; }
+  .sense { background:var(--s-sense); border-radius:14px; padding:3px 4px 3px 10px; display:inline-flex; align-items:center; gap:6px; box-shadow:inset 0 -2px 0 rgba(0,0,0,.15); }
+  .motion { background:var(--s-motion); } .pen { background:var(--s-pen); } .var { background:var(--s-var); }
+  .fixed { opacity:.9; }
+  .pick { all:unset; cursor:pointer; background:#fff; color:#2b2f38; border-radius:14px; padding:2px 9px; font-weight:800; font-size:14px; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; }
+  .pick:hover { box-shadow:0 0 0 3px rgba(255,255,255,.45); }
+  .pick::after { content:'▾'; font-size:11px; color:#6b7280; }
+  .pick.lock { cursor:default; } .pick.lock::after { content:''; } .pick.lock:hover { box-shadow:none; }
+  .sw { display:inline-block; width:15px; height:15px; border-radius:4px; border:1px solid rgba(0,0,0,.35); flex:0 0 auto; }
+  .ifb.run { filter:drop-shadow(0 0 5px #fff6a8) drop-shadow(0 0 2px #fff); }
+  .ifb.run > .ch::before { content:'▶'; font-size:11px; }
+  #code.go-edit .pick:not(.lock) { animation:pulsew 1.4s ease-in-out infinite; }
+  @keyframes pulsew { 0%,100% { box-shadow:0 0 0 0 rgba(255,255,255,0); } 50% { box-shadow:0 0 0 5px rgba(255,255,255,.55); } }
+
+  /* picker popover */
+  #picker { position:absolute; z-index:20; background:#fff; color:#222; border-radius:12px; padding:8px; box-shadow:0 10px 30px rgba(0,0,0,.5); display:flex; flex-wrap:wrap; gap:6px; max-width:300px; }
+  #picker[hidden] { display:none; }
+  #picker button { all:unset; cursor:pointer; padding:7px 10px; border-radius:9px; background:#f1f3f7; font-weight:700; font-size:14px; display:inline-flex; align-items:center; gap:6px; }
+  #picker button:hover, #picker button.cur { background:#ffe7a3; }
+
+  /* stage */
+  .stagebar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .flag { background:#4CBF56; color:#fff; border-color:#4CBF56; font-weight:800; font-size:15px; padding:8px 16px; border-radius:12px; }
+  .flag:hover { border-color:#7be085; background:#56cc60; }
+  .seg { display:inline-flex; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .seg .btn { border:none; border-radius:0; background:#1a1f2b; }
+  .seg .btn + .btn { border-left:1px solid var(--line); }
+  .seg .btn:hover:not(:disabled) { background:#232a3a; color:var(--acc); }
+  .seg .btn.on { background:#2c2716; color:var(--acc); font-weight:800; box-shadow:inset 0 -2px 0 var(--acc); }
+  .flag.go { background:#4CBF56; color:#fff; border-color:#4CBF56; animation:pulseg 1.4s ease-in-out infinite; }
+  @keyframes pulseg { 0%,100% { box-shadow:0 0 0 0 rgba(76,191,86,0); } 50% { box-shadow:0 0 0 7px rgba(76,191,86,.45); } }
+  .screen { position:relative; width:100%; margin:12px auto 0; transition:width .25s; }
+  #cv { width:100%; aspect-ratio:1; display:block; background:#0e1016; border-radius:12px; border:1px solid #1c212c; }
+  .screen .n { position:absolute; top:10px; right:10px; background:#0b0d12cc; border:1px solid var(--line); border-radius:99px; padding:2px 11px; font-size:13px; color:var(--dim); backdrop-filter:blur(4px); pointer-events:none; }
+  .screen .n b { color:var(--fg); font-variant-numeric:tabular-nums; font-size:14px; }
+  .bubble { position:relative; display:flex; align-items:flex-start; gap:10px; margin-top:14px; background:#1d2230; border:1px solid #2e3546; border-radius:14px; padding:9px 14px; min-height:44px; }
+  .bubble::before { content:''; position:absolute; top:-8px; left:22px; width:14px; height:14px; background:#1d2230; border-left:1px solid #2e3546; border-top:1px solid #2e3546; transform:rotate(45deg); }
+  .bubble #s-icon { font-size:20px; line-height:26px; } .bubble .bt { flex:1; min-width:0; line-height:26px; }
+  #steplog { font-size:13.5px; color:#c9cfdb; border-top:1px dashed #343b4d; margin-top:6px; padding-top:5px; line-height:1.5; }
+  #steplog:empty { display:none; }
+
+  /* result */
+  #result { margin-top:12px; background:#10141c; border:1px solid var(--line); border-radius:12px; padding:14px; }
+  .rtitle { display:flex; gap:10px; align-items:center; font-size:21px; font-weight:800; }
+  .rtitle.highway { color:var(--hw); } .rtitle.endless { color:#ff9aa5; } .rtitle.cycle, .rtitle.stalled, .rtitle.edge { color:#f2d48a; }
+  #r-text { margin:6px 0 0; color:#d5dae4; }
+  .cmp { margin-top:14px; display:grid; gap:6px; }
+  .cmp:empty { display:none; }
+  .cmp .bar { display:grid; grid-template-columns:96px 1fr; gap:8px; align-items:center; font-size:13px; color:var(--dim); }
+  .cmp .tr { background:#0e1016; border-radius:6px; height:22px; position:relative; overflow:hidden; }
+  .cmp .fill { position:absolute; left:0; top:0; bottom:0; background:#2b3142; border-radius:6px; }
+  .cmp .me .fill { background:var(--hw); } .cmp .me { color:var(--fg); font-weight:700; }
+  .cmp .tr span { position:absolute; left:8px; top:0; line-height:22px; color:var(--fg); font-size:12.5px; font-variant-numeric:tabular-nums; }
+  .cmp .me .tr span { color:#fff; font-weight:800; text-shadow:0 0 3px #000, 0 0 2px #000; }
+
+  /* more */
+  .extra { grid-column:1 / -1; display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; align-items:start; background:none; border:none; padding:0; }
+  .extra details { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+  .extra details[open] { border-color:#343b4d; }
+  .extra summary { cursor:pointer; font-weight:600; list-style:none; display:flex; align-items:center; gap:6px; }
+  .extra summary::-webkit-details-marker { display:none; }
+  .extra summary::after { content:'▾'; margin-left:auto; color:var(--dim); transition:transform .2s; }
+  .extra details[open] summary::after { transform:rotate(180deg); }
+  .extra summary:hover { color:var(--acc); }
+  .presets { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; } .presets .btn { font-size:13.5px; padding:6px 10px; }
+  .record { color:#f2d48a; font-size:14px; margin:8px 0; } .record b { color:var(--acc); }
+  #saved { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .sv { display:flex; align-items:center; gap:6px; background:#0e1016; border:1px solid var(--line); border-radius:9px; padding:4px 4px 4px 10px; font-size:13px; }
+  .sv button { all:unset; cursor:pointer; } .sv .nm:hover { color:var(--acc); } .sv .x { color:var(--dim); padding:0 6px; }
+  .b { display:inline-block; font-size:11px; padding:0 7px; border-radius:20px; background:#2a3040; color:#cfd5e2; white-space:nowrap; }
+  .b.highway { background:#16384f; color:#8fd0ff; } .b.endless, .b.wander { background:#4a2228; color:#ff9aa5; } .b.cycle, .b.stalled, .b.edge { background:#3b3320; color:#f2d48a; }
+  .more p { color:var(--dim); font-size:13.5px; margin:6px 0; }
+  input[type=text] { background:#0e1016; color:var(--fg); border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:14px ui-monospace, Menlo, monospace; width:100%; }
+  #err { color:#ff9aa5; font-size:13px; min-height:1em; margin-top:4px; }
+  .toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:var(--acc); color:#0b0d12; padding:9px 16px; border-radius:20px; font-weight:700; opacity:0; transition:opacity .2s; pointer-events:none; z-index:30; max-width:90vw; text-align:center; }
+  .toast.show { opacity:1; }
+
+  #stagecard { position:sticky; top:10px; max-height:calc(100vh - 20px); overflow:auto; }
+  @media (min-width:861px) {
+    .screen { width:min(100%, max(300px, calc(100vh - 250px))); }
+    #stagecard:has(#result:not([hidden])) .screen { width:min(100%, max(260px, calc(100vh - 500px))); }
+    #stagecard:has(#result:not([hidden])) .bubble { display:none; }
+  }
+  @media (prefers-reduced-motion:reduce) { *, *::before, *::after { animation:none !important; transition:none !important; } }
+  #mbar { display:none; }
+  #picker .pnote { flex-basis:100%; font-size:12px; color:#666; margin:2px 2px 0; }
+  @media (max-width:860px) {
+    main { grid-template-columns:1fr; } #stagecard { position:static; max-height:none; } h1 { font-size:21px; }
+    .extra { grid-template-columns:1fr; } .steps li { font-size:13px; }
+    #mbar { position:fixed; left:8px; right:8px; bottom:8px; z-index:15; display:flex; gap:8px; align-items:center; background:#151922ee; border:1px solid var(--line);
+      border-radius:14px; padding:8px; box-shadow:0 6px 24px rgba(0,0,0,.6); backdrop-filter:blur(6px); }
+    #mbar[hidden] { display:none; }
+    #mbar span { flex:1; font-size:13px; color:#c9cfdb; line-height:1.35; }
+    body { padding-bottom:80px; } .toast { bottom:84px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="./">← Turmite Hunt 갤러리</a>
+  <h1>나만의 개미 만들기</h1>
+  <ol class="steps" id="steps" aria-label="하는 순서">
+    <li data-p="ready"><b>1</b> 🏁 출발 누르기</li>
+    <li data-p="running"><b>2</b> 개미 구경하기</li>
+    <li data-p="done"><b>3</b> 하얀 칸 <span class="pk">▾</span>을 바꿔서 다시</li>
+  </ol>
+</header>
+<div id="fatal" hidden></div>
+<main>
+  <section class="card" id="codecard">
+    <div class="ph"><h2>① 개미의 코드</h2><span class="hint" style="margin:0" id="codehint"></span></div>
+    <div id="code"></div>
+    <div class="drawer">
+      <span class="dl">블록 서랍</span>
+      <button class="btn add" id="c-add">＋ 색 블록 추가</button>
+      <button class="btn" id="dice">🎲 아무거나 만들기</button>
+    </div>
+    <div class="drawer sub">
+      <button class="btn ghost" id="c-del">− 마지막 색 빼기</button>
+      <button class="btn ghost" id="s-add">+ 기분 추가 (고급)</button><button class="btn ghost" id="s-del" hidden>− 기분 빼기</button>
+    </div>
+  </section>
+
+  <section class="card" id="stagecard">
+    <div class="ph"><h2>② 무대</h2>
+      <div class="stagebar"><button class="btn flag" id="flag">🏁 출발</button>
+        <div class="seg"><button class="btn" id="play">⏸ 멈춤</button><button class="btn" id="step">👣 한 걸음</button></div>
+        <div class="seg" id="speeds" role="group" aria-label="속도"><button class="btn on" data-i="0">보통</button><button class="btn" data-i="1">⏩ 빠르게</button><button class="btn" data-i="2">🚀 초고속</button></div></div>
+    </div>
+    <div class="screen">
+      <canvas id="cv" width="720" height="720" aria-label="개미가 걷는 격자"></canvas>
+      <span class="n"><b id="st-t">0</b> 걸음</span>
+    </div>
+    <div class="status bubble"><span id="s-icon">🏁</span><div class="bt"><span id="s-text"></span><div id="steplog"></div></div></div>
+    <div id="result" hidden>
+      <div class="rtitle" id="r-title"></div>
+      <p id="r-text"></p>
+      <div class="row"><button class="btn" id="mutate">✏️ 하나만 바꿔서 다시</button><button class="btn" id="dice2">🎲 새 개미</button><button class="btn" id="save">💾 저장</button><button class="btn ghost" id="copy">🔗 링크 복사</button></div>
+      <div class="cmp" id="cmp"></div>
+    </div>
+  </section>
+
+  <section class="card extra">
+    <details id="savedbox"><summary>🏆 내 개미 모음 <span id="sv-count"></span></summary>
+      <div class="record" id="record"></div>
+      <div id="saved"></div>
+      <p class="hint" id="sv-empty">아직 없어요. 결과가 나오면 💾 저장을 누르세요. (이 브라우저에만 저장돼요)</p>
+    </details>
+    <details><summary>👀 유명한 개미 불러오기</summary><div class="presets" id="presets"></div></details>
+    <details id="adv"><summary>🔧 규칙을 글자로 보기·붙여 넣기</summary>
+      <p class="hint">블록은 이 글자와 같아요. 개미는 <code>LLRR</code>처럼 색마다 한 글자(L 왼쪽, R 오른쪽, N 직진, U 뒤로), 그 밖은 Golly 표기 <code>{{{칠할색,회전,다음기분},…},…}</code>(회전 1=직진 2=오른쪽 4=뒤로 8=왼쪽)예요. 갤러리의 규칙을 붙여 넣어도 돼요.</p>
+      <input type="text" id="ruletext" spellcheck="false" aria-label="규칙 글자">
+      <div id="err"></div>
+    </details>
+    <details class="more"><summary>🔍 컴퓨터는 결과를 어떻게 알아내나요?</summary>
+      <p>0.4초마다 개미의 마지막 200만 걸음 기록을 끝에서부터 거꾸로 읽고, 같은 동작 묶음이 6번 넘게 되풀이되는지 찾아요(KMP 접두사 함수). 묶음 하나를 도는 동안 앞으로 나가면 <b>고속도로</b>, 제자리면 <b>덫</b>이에요.</p>
+      <p>고속도로처럼 보여도 나중에 깨질 수 있어서, 격자(4096×4096칸) 끝까지 가야 결과를 확정해요. 5천만 걸음까지 되풀이가 없으면 '계속 헤맴'이라고 알려 줘요. 결과가 나와도 개미는 멈추지 않고, 격자 끝에 닿을 때만 멈춰요.</p>
+    </details>
+  </section>
+</main>
+<div id="picker" hidden></div>
+<div id="mbar" hidden><span id="mbar-t">코드를 다 만들었으면 출발!</span><button class="btn flag go" id="mflag">🏁 출발 · 무대 보기</button></div>
+<div class="toast" id="toast"></div>
+<script type="module" src="make.js"></script>
+</body>
+</html>

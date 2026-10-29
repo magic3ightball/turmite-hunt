@@ -1,0 +1,10 @@
+5000 rules, 5000 to run at 2,000,000 steps -> ~/Claude_etc/turmite-hunt/results/random_3s2c.jsonl
+  2560/5000  1841s
+done in 1859s
+5000 rules, 5000 to run at 2,000,000 steps -> ~/Claude_etc/turmite-hunt/results/random_2s3c.jsonl
+  2560/5000  995s
+done in 1952s
+4015 rules, 4015 to run at 2,000,000 steps -> ~/Claude_etc/turmite-hunt/results/strings_LR_12.jsonl
+  2560/4015  712s
+done in 723s
+2830 rules, 2830 to run at 20,000,000 steps -> ~/Claude_etc/turmite-hunt/results/strings_LR_12.deep.jsonl

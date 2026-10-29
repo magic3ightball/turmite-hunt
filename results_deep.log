@@ -1,0 +1,8 @@
+33 rules, 33 to run at 20,000,000 steps -> results/strings_LRNU_8.deep.jsonl
+done in 1s
+4 rules, 4 to run at 20,000,000 steps -> results/turmites_2s2c.deep.jsonl
+  4/4  0s
+done in 0s
+353 rules, 353 to run at 20,000,000 steps -> results/strings_LR_12.deep.jsonl
+  320/353  970s
+done in 2007s

@@ -1,0 +1,839 @@
+{
+"strings_LRNU_8": {
+"LLLUL": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LRLUR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LULLULR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LUNNUNR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LLUUNRLU": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LRLLUNLL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LRLUURLR": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LRLUURUU": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LRURLNUR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LNLRRLUL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LULULLUR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LULULNUL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LURLURLR": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LURLUURU": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LURNLLUR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LURUULNL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LUNNUUNR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LUULLURL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LUURLURU": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LUUNLRUL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LUUURLRU": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LUUURULR": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LUUUURUU": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"ULLRLNRU": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"ULRNNRNL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"ULNNUUNR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"ULURLUUR": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"ULUULUNU": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"ULUURNNL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"UNLUURUU": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"UULRLUUR": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"UULUUUUR": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"UUUULRLU": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+}
+},
+"strings_LR_12": {
+"LLRLRRL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LLLLLRRRL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LLLLRLLRR": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LLLLRRLLR": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LLLRRRLLL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LLRLRRLRL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LLRRLRLRL": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LRRLRLLLR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+},
+"LLRLLLRRRLL": {
+"bbox_at_onset": null,
+"followed": true,
+"real": true
+},
+"LLRRRLLLLLR": {
+"bbox_at_onset": null,
+"followed": null,
+"real": true
+}
+},
+"turmites_2s2c": {
+"{{{0,2,1},{0,8,0}},{{1,8,1},{0,2,0}}}": {
+"bbox_at_onset": [
+1198,
+1130
+],
+"followed": false,
+"real": false
+},
+"{{{1,1,1},{1,2,1}},{{1,8,0},{0,4,0}}}": {
+"bbox_at_onset": [
+248,
+257
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,8,1}},{{0,8,0},{0,2,1}}}": {
+"bbox_at_onset": [
+1130,
+1198
+],
+"followed": false,
+"real": false
+},
+"{{{1,4,0},{1,1,1}},{{1,2,1},{0,4,0}}}": {
+"bbox_at_onset": [
+52,
+55
+],
+"followed": true,
+"real": true
+},
+"{{{1,1,1},{1,1,0}},{{1,2,1},{0,4,0}}}": {
+"bbox_at_onset": [
+8185,
+8182
+],
+"followed": null,
+"real": false
+},
+"{{{0,2,1},{0,4,0}},{{1,8,1},{0,1,0}}}": {
+"bbox_at_onset": [
+8185,
+8186
+],
+"followed": null,
+"real": false
+},
+"{{{0,2,1},{1,4,0}},{{1,8,1},{0,1,0}}}": {
+"bbox_at_onset": [
+8185,
+8186
+],
+"followed": null,
+"real": false
+},
+"{{{1,2,0},{0,1,1}},{{0,8,0},{0,4,1}}}": {
+"bbox_at_onset": [
+8186,
+8188
+],
+"followed": null,
+"real": false
+},
+"{{{1,2,0},{0,1,1}},{{0,8,0},{1,4,1}}}": {
+"bbox_at_onset": [
+8186,
+8188
+],
+"followed": null,
+"real": false
+},
+"{{{0,1,1},{0,4,0}},{{1,2,1},{0,8,0}}}": {
+"bbox_at_onset": [
+8186,
+8187
+],
+"followed": null,
+"real": false
+},
+"{{{0,1,1},{1,4,0}},{{1,2,1},{0,8,0}}}": {
+"bbox_at_onset": [
+8186,
+8187
+],
+"followed": null,
+"real": false
+},
+"{{{1,2,0},{0,8,1}},{{0,1,0},{0,4,1}}}": {
+"bbox_at_onset": [
+8186,
+8187
+],
+"followed": null,
+"real": false
+},
+"{{{1,2,0},{0,8,1}},{{0,1,0},{1,4,1}}}": {
+"bbox_at_onset": [
+8186,
+8187
+],
+"followed": null,
+"real": false
+},
+"{{{0,2,1},{0,8,0}},{{1,1,0},{0,2,1}}}": {
+"bbox_at_onset": [
+8183,
+8185
+],
+"followed": null,
+"real": false
+},
+"{{{1,1,1},{0,2,0}},{{0,8,0},{0,4,1}}}": {
+"bbox_at_onset": [
+8187,
+8187
+],
+"followed": null,
+"real": false
+},
+"{{{1,1,1},{1,2,0}},{{0,8,0},{0,4,1}}}": {
+"bbox_at_onset": [
+8187,
+8188
+],
+"followed": null,
+"real": false
+},
+"{{{0,1,1},{1,2,0}},{{1,4,1},{0,8,0}}}": {
+"bbox_at_onset": [
+8187,
+8188
+],
+"followed": null,
+"real": false
+},
+"{{{1,1,1},{0,4,0}},{{1,2,1},{0,2,0}}}": {
+"bbox_at_onset": [
+8187,
+8187
+],
+"followed": null,
+"real": false
+},
+"{{{0,1,1},{0,2,0}},{{1,4,1},{0,8,0}}}": {
+"bbox_at_onset": [
+8187,
+8187
+],
+"followed": null,
+"real": false
+},
+"{{{1,2,1},{1,8,0}},{{1,4,1},{0,1,0}}}": {
+"bbox_at_onset": [
+4112,
+4230
+],
+"followed": false,
+"real": false
+},
+"{{{1,1,1},{1,2,0}},{{1,4,1},{0,8,0}}}": {
+"bbox_at_onset": [
+4199,
+4280
+],
+"followed": false,
+"real": false
+},
+"{{{1,2,0},{1,2,1}},{{1,8,0},{0,1,1}}}": {
+"bbox_at_onset": [
+747,
+678
+],
+"followed": null,
+"real": true
+},
+"{{{0,2,1},{1,2,0}},{{1,8,1},{0,1,0}}}": {
+"bbox_at_onset": [
+669,
+598
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,1,1}},{{0,8,0},{1,8,1}}}": {
+"bbox_at_onset": [
+598,
+669
+],
+"followed": null,
+"real": true
+},
+"{{{0,2,1},{0,1,0}},{{1,8,1},{1,1,0}}}": {
+"bbox_at_onset": [
+1179,
+945
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{1,1,1}},{{0,8,0},{0,1,1}}}": {
+"bbox_at_onset": [
+945,
+1179
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,1},{0,4,1}},{{1,1,0},{0,8,1}}}": {
+"bbox_at_onset": [
+380,
+693
+],
+"followed": null,
+"real": true
+},
+"{{{1,1,1},{0,2,0}},{{1,8,0},{0,4,0}}}": {
+"bbox_at_onset": [
+1072,
+1286
+],
+"followed": null,
+"real": true
+},
+"{{{1,1,1},{0,2,0}},{{1,2,1},{1,1,0}}}": {
+"bbox_at_onset": [
+464,
+474
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,2,1}},{{1,8,0},{0,4,1}}}": {
+"bbox_at_onset": [
+792,
+830
+],
+"followed": null,
+"real": true
+},
+"{{{0,1,1},{0,2,1}},{{1,2,1},{0,8,0}}}": {
+"bbox_at_onset": [
+1887,
+2182
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,8,1}},{{0,1,0},{0,2,0}}}": {
+"bbox_at_onset": [
+1887,
+2182
+],
+"followed": null,
+"real": true
+},
+"{{{1,1,1},{0,4,1}},{{1,2,1},{1,8,0}}}": {
+"bbox_at_onset": [
+1355,
+1615
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{1,4,1}},{{0,8,1},{0,2,0}}}": {
+"bbox_at_onset": [
+430,
+374
+],
+"followed": null,
+"real": true
+},
+"{{{1,4,1},{1,1,0}},{{1,1,0},{0,2,1}}}": {
+"bbox_at_onset": [
+938,
+846
+],
+"followed": null,
+"real": true
+},
+"{{{1,4,1},{0,2,1}},{{1,1,0},{0,8,1}}}": {
+"bbox_at_onset": [
+581,
+279
+],
+"followed": null,
+"real": true
+},
+"{{{1,1,1},{0,2,0}},{{1,2,0},{0,8,0}}}": {
+"bbox_at_onset": [
+1614,
+1699
+],
+"followed": null,
+"real": true
+},
+"{{{0,2,1},{1,1,1}},{{1,8,1},{0,1,0}}}": {
+"bbox_at_onset": [
+1485,
+1566
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,1,1}},{{0,8,0},{1,1,0}}}": {
+"bbox_at_onset": [
+1566,
+1485
+],
+"followed": null,
+"real": true
+},
+"{{{1,1,1},{0,2,0}},{{1,4,0},{0,8,0}}}": {
+"bbox_at_onset": [
+1318,
+1657
+],
+"followed": null,
+"real": true
+},
+"{{{0,1,1},{1,1,1}},{{1,2,1},{0,4,0}}}": {
+"bbox_at_onset": [
+1176,
+1181
+],
+"followed": true,
+"real": true
+},
+"{{{1,1,1},{1,1,1}},{{1,2,1},{0,4,0}}}": {
+"bbox_at_onset": [
+1181,
+1176
+],
+"followed": true,
+"real": true
+},
+"{{{1,4,1},{0,1,0}},{{0,2,1},{1,1,0}}}": {
+"bbox_at_onset": [
+1440,
+1311
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,8,1}},{{1,8,0},{0,1,0}}}": {
+"bbox_at_onset": [
+1122,
+1050
+],
+"followed": null,
+"real": true
+},
+"{{{0,4,1},{0,1,0}},{{1,2,1},{0,4,0}}}": {
+"bbox_at_onset": [
+1443,
+1722
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,4,1}},{{0,4,0},{0,1,1}}}": {
+"bbox_at_onset": [
+1443,
+1722
+],
+"followed": null,
+"real": true
+},
+"{{{1,1,1},{0,2,0}},{{1,2,1},{0,8,0}}}": {
+"bbox_at_onset": [
+878,
+708
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,8,1}},{{1,2,0},{0,1,1}}}": {
+"bbox_at_onset": [
+509,
+570
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,8,1}},{{1,2,0},{1,8,0}}}": {
+"bbox_at_onset": [
+1158,
+901
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,1},{0,8,0}},{{1,4,0},{1,8,0}}}": {
+"bbox_at_onset": [
+1028,
+1123
+],
+"followed": null,
+"real": true
+},
+"{{{1,4,1},{1,2,1}},{{1,8,0},{0,2,1}}}": {
+"bbox_at_onset": [
+1126,
+1200
+],
+"followed": null,
+"real": true
+},
+"{{{0,2,1},{0,2,1}},{{1,1,0},{0,2,1}}}": {
+"bbox_at_onset": [
+3051,
+3051
+],
+"followed": false,
+"real": false
+},
+"{{{1,1,1},{0,2,0}},{{0,2,0},{0,2,0}}}": {
+"bbox_at_onset": [
+3051,
+3051
+],
+"followed": false,
+"real": false
+},
+"{{{1,4,1},{1,2,1}},{{1,1,0},{0,1,1}}}": {
+"bbox_at_onset": [
+478,
+575
+],
+"followed": null,
+"real": true
+},
+"{{{0,2,1},{0,1,0}},{{1,2,1},{0,4,0}}}": {
+"bbox_at_onset": [
+515,
+353
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,4,1}},{{0,2,0},{0,1,1}}}": {
+"bbox_at_onset": [
+353,
+515
+],
+"followed": null,
+"real": true
+},
+"{{{1,1,1},{0,1,0}},{{1,4,0},{1,2,0}}}": {
+"bbox_at_onset": [
+968,
+967
+],
+"followed": null,
+"real": true
+},
+"{{{1,1,1},{0,2,0}},{{1,4,1},{1,2,0}}}": {
+"bbox_at_onset": [
+591,
+678
+],
+"followed": null,
+"real": true
+},
+"{{{0,1,1},{1,2,0}},{{1,2,0},{0,2,1}}}": {
+"bbox_at_onset": [
+3086,
+3543
+],
+"followed": false,
+"real": false
+},
+"{{{1,2,0},{0,2,1}},{{1,4,0},{1,8,0}}}": {
+"bbox_at_onset": [
+1047,
+1120
+],
+"followed": null,
+"real": true
+},
+"{{{0,4,1},{0,1,0}},{{1,2,1},{1,4,0}}}": {
+"bbox_at_onset": [
+1030,
+1179
+],
+"followed": true,
+"real": true
+},
+"{{{1,1,1},{0,4,0}},{{1,2,1},{1,4,0}}}": {
+"bbox_at_onset": [
+1181,
+1176
+],
+"followed": true,
+"real": true
+},
+"{{{1,2,0},{1,8,1}},{{1,4,0},{0,2,0}}}": {
+"bbox_at_onset": [
+562,
+627
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,1},{1,4,1}},{{1,4,0},{0,1,1}}}": {
+"bbox_at_onset": [
+823,
+867
+],
+"followed": null,
+"real": true
+},
+"{{{1,4,1},{0,1,0}},{{1,2,0},{1,4,0}}}": {
+"bbox_at_onset": [
+867,
+823
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,2,1}},{{1,4,0},{1,1,0}}}": {
+"bbox_at_onset": [
+269,
+297
+],
+"followed": null,
+"real": true
+},
+"{{{0,2,1},{0,4,1}},{{1,2,1},{0,1,0}}}": {
+"bbox_at_onset": [
+367,
+352
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{0,1,1}},{{0,2,0},{0,4,0}}}": {
+"bbox_at_onset": [
+352,
+367
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{1,8,1}},{{0,8,1},{0,4,0}}}": {
+"bbox_at_onset": [
+259,
+459
+],
+"followed": true,
+"real": true
+},
+"{{{1,4,1},{0,2,0}},{{1,8,0},{0,8,0}}}": {
+"bbox_at_onset": [
+455,
+368
+],
+"followed": true,
+"real": true
+},
+"{{{1,2,0},{1,1,1}},{{0,8,1},{0,2,0}}}": {
+"bbox_at_onset": [
+659,
+705
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,1},{0,2,1}},{{1,4,0},{0,8,1}}}": {
+"bbox_at_onset": [
+246,
+220
+],
+"followed": null,
+"real": true
+},
+"{{{1,4,1},{0,4,0}},{{0,2,1},{1,1,0}}}": {
+"bbox_at_onset": [
+161,
+155
+],
+"followed": true,
+"real": true
+},
+"{{{1,4,0},{1,4,1}},{{0,2,1},{0,1,0}}}": {
+"bbox_at_onset": [
+155,
+161
+],
+"followed": null,
+"real": true
+},
+"{{{1,2,0},{1,4,1}},{{0,2,1},{0,2,0}}}": {
+"bbox_at_onset": [
+798,
+531
+],
+"followed": null,
+"real": true
+},
+"{{{1,4,1},{0,2,0}},{{0,8,1},{1,8,0}}}": {
+"bbox_at_onset": [
+135,
+148
+],
+"followed": null,
+"real": true
+},
+"{{{0,2,1},{0,8,1}},{{1,4,0},{1,2,1}}}": {
+"bbox_at_onset": [
+3,
+8187
+],
+"followed": null,
+"real": false
+}
+}
+}
